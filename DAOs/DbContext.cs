@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAOs;
 
-public partial class OnDemandTutorContext : DbContext
+public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
 {
-    public OnDemandTutorContext()
+    public DbContext()
     {
     }
 
-    public OnDemandTutorContext(DbContextOptions<OnDemandTutorContext> options)
+    public DbContext(DbContextOptions<DbContext> options)
         : base(options)
     {
     }
@@ -50,9 +50,7 @@ public partial class OnDemandTutorContext : DbContext
 
     public virtual DbSet<Wallet> Wallets { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;uid=sa;pwd=12345;database=OnDemandTutor;TrustServerCertificate=True");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer("Server=localhost;uid=sa;pwd=12345;database=OnDemandTutor;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
