@@ -10,31 +10,34 @@ namespace Services
 {
     public class SubjectGroupService : ISubjectGroupService
     {
-        private readonly ISubjectGroupRepository _subjectGroupRepository;
+        private readonly ISubjectGroupRepository iSubjectGroupRepository = null;
 
-        public SubjectGroupService(SubjectGroupRepository subjectGroupRepository)
+        public SubjectGroupService()
         {
-            _subjectGroupRepository = subjectGroupRepository;
+            if (iSubjectGroupRepository == null)
+            {
+                iSubjectGroupRepository = new SubjectGroupRepository();
+            }
         }
 
         public bool AddSubjectGroup(SubjectGroup subjectGroup)
         {
-            return _subjectGroupRepository.AddSubjectGroup(subjectGroup);
+            return iSubjectGroupRepository.AddSubjectGroup(subjectGroup);
         }
 
         public bool DelSubjectGroups(int id)
         {
-            return _subjectGroupRepository.DelSubjectGroups(id);
+            return iSubjectGroupRepository.DelSubjectGroups(id);
         }
 
         public List<SubjectGroup> GetSubjectGroups()
         {
-            return _subjectGroupRepository.GetSubjectGroups();
+            return iSubjectGroupRepository.GetSubjectGroups();
         }
 
         public bool UpdateSubjectGroups(SubjectGroup subjectGroup)
         {
-            return _subjectGroupRepository.UpdateSubjectGroups(subjectGroup);
+            return iSubjectGroupRepository.UpdateSubjectGroups(subjectGroup);
         }
     }
 }

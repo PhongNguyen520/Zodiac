@@ -10,31 +10,34 @@ namespace Services
 {
     public class NotificationService : INotificationService
     {
-        private readonly INotificationRepository _notificationRepository;
+        private readonly INotificationRepository iNotificationRepository = null;
 
-        public NotificationService(NotificationRepository notificationRepository)
+        public NotificationService()
         {
-            _notificationRepository = notificationRepository;
+            if (iNotificationRepository == null)
+            {
+                iNotificationRepository = new NotificationRepository();
+            }
         }
 
         public bool AddNotification(Notification notification)
         {
-            return _notificationRepository.AddNotification(notification);
+            return iNotificationRepository.AddNotification(notification);
         }
 
         public bool DelNotifications(int id)
         {
-            return _notificationRepository.DelNotifications(id);
+            return iNotificationRepository.DelNotifications(id);
         }
 
         public List<Notification> GetNotifications()
         {
-            return _notificationRepository.GetNotifications();
+            return iNotificationRepository.GetNotifications();
         }
 
         public bool UpdateNotifications(Notification notification)
         {
-            return _notificationRepository.UpdateNotifications(notification);
+            return iNotificationRepository.UpdateNotifications(notification);
         }
     }
 }

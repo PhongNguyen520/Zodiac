@@ -10,30 +10,33 @@ namespace Services
 {
     public class FindTutorFormService : IFindTutorFormService
     {
-        private readonly IFindTutorFormRepository _repository;
+        private readonly IFindTutorFormRepository iFindTutorFormRepository = null;
         
         public FindTutorFormService(FindTutorFormRepository repository)
         {
-            _repository = repository;
+            if (iFindTutorFormRepository == null)
+            {
+                iFindTutorFormRepository = new FindTutorFormRepository();
+            }
         }
         public bool AddFindTutorForm(FindTutorForm form)
         {
-            return _repository.AddFindTutorForm(form);
+            return iFindTutorFormRepository.AddFindTutorForm(form);
         }
 
         public bool DelFindTutorForms(int id)
         {
-            return _repository.DelFindTutorForms(id);
+            return iFindTutorFormRepository.DelFindTutorForms(id);
         }
 
         public List<FindTutorForm> GetFindTutorForms()
         {
-            return _repository.GetFindTutorForms();
+            return iFindTutorFormRepository.GetFindTutorForms();
         }
 
         public bool UpdateFindTutorForms(FindTutorForm form)
         {
-            return _repository.UpdateFindTutorForms(form);
+            return iFindTutorFormRepository.UpdateFindTutorForms(form);
         }
     }
 }

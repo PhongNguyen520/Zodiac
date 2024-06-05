@@ -10,30 +10,33 @@ namespace Services
 {
     public class RoleService : IRoleService
     {
-        private readonly RoleRepository _roleRepository;
+        private readonly IRoleRepository iRoleRepository = null;
 
-        public RoleService(RoleRepository roleRepository)
+        public RoleService()
         {
-            _roleRepository = roleRepository;
+            if (iRoleRepository == null)
+            {
+                iRoleRepository = new RoleRepository();
+            }
         }
         public bool AddRole(Role role)
         {
-            return _roleRepository.AddRole(role);
+            return iRoleRepository.AddRole(role);
         }
 
         public bool DelRoles(int id)
         {
-            return _roleRepository.DelRoles(id);
+            return iRoleRepository.DelRoles(id);
         }
 
         public List<Role> GetRoles()
         {
-            return _roleRepository.GetRoles();
+            return iRoleRepository.GetRoles();
         }
 
         public bool UpdateAccounts(Role role)
         {
-            return _roleRepository.UpdateAccounts(role);
+            return iRoleRepository.UpdateAccounts(role);
         }
     }
 }

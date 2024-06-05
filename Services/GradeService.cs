@@ -10,31 +10,34 @@ namespace Services
 {
     public class GradeService : IGradeService
     {
-        private readonly IGradeRepository _gradeRepository;   
+        private readonly IGradeRepository iGradeRepository = null;   
 
-        public GradeService(GradeRepository gradeRepository)
+        public GradeService()
         {
-            _gradeRepository = gradeRepository;
+            if (iGradeRepository == null)
+            {
+                iGradeRepository = new GradeRepository();
+            }
         }
     
         public bool AddGrade(Grade grade)
         {
-            return _gradeRepository.AddGrade(grade);
+            return iGradeRepository.AddGrade(grade);
         }
 
         public bool DelGrades(int id)
         {
-            return _gradeRepository.DelGrades(id);
+            return iGradeRepository.DelGrades(id);
         }
 
         public List<Grade> GetGrades()
         {
-            return _gradeRepository.GetGrades();
+            return iGradeRepository.GetGrades();
         }
 
         public bool UpdateGrades(Grade grade)
         {
-            return _gradeRepository.UpdateGrades(grade);
+            return iGradeRepository.UpdateGrades(grade);
         }
     }
 }

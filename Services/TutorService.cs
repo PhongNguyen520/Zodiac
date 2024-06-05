@@ -12,9 +12,9 @@ namespace Services
     {
         private readonly ITutorRepository _repository;
 
-        public TutorService(TutorRepository repository)
+        public TutorService()
         {
-            _repository = repository;
+            _repository = new TutorRepository();
         }
 
         public bool AddTutor(Tutor tutor)

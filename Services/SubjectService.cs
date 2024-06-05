@@ -10,31 +10,34 @@ namespace Services
 {
     public class SubjectService : ISubjectService
     {
-        private readonly ISubjectRepository _subjectRepository;
+        private readonly ISubjectRepository iSubjectRepository = null;
 
-        public SubjectService(SubjectRepository subjectRepository)
+        public SubjectService()
         {
-            _subjectRepository = subjectRepository;
+            if (iSubjectRepository == null)
+            {
+                iSubjectRepository = new SubjectRepository();
+            }
         }
 
         public bool AddSubject(Subject subject)
         {
-            return _subjectRepository.AddSubject(subject);
+            return iSubjectRepository.AddSubject(subject);
         }
 
         public bool DelSubjects(int id)
         {
-            return _subjectRepository.DelSubjects(id);
+            return iSubjectRepository.DelSubjects(id);
         }
 
         public List<Subject> GetSubjects()
         {
-            return _subjectRepository.GetSubjects();
+            return iSubjectRepository.GetSubjects();
         }
 
         public bool UpdateSubjects(Subject subject)
         {
-            return _subjectRepository.UpdateSubjects(subject);
+            return iSubjectRepository.UpdateSubjects(subject);
         }
     }
 }

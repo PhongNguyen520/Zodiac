@@ -10,31 +10,34 @@ namespace Services
 {
     public class TutorAdService : ITutorAdService
     {
-        private readonly ITutorAdRepository _repository;
+        private readonly ITutorAdRepository iTutorAdRepository = null;
 
-        public TutorAdService(TutorAdRepository repository)
+        public TutorAdService()
         {
-            _repository = repository;
+            if (iTutorAdRepository == null)
+            {
+                iTutorAdRepository = new TutorAdRepository();
+            }
         }
 
         public bool AddTutorAd(TutorAd tutorAd)
         {
-            return _repository.AddTutorAd(tutorAd);
+            return iTutorAdRepository.AddTutorAd(tutorAd);
         }
 
         public bool DelTutorAds(int id)
         {
-            return _repository.DelTutorAds(id);
+            return iTutorAdRepository.DelTutorAds(id);
         }
 
         public List<TutorAd> GetTutorAds()
         {
-            return _repository.GetTutorAds();
+            return iTutorAdRepository.GetTutorAds();
         }
 
         public bool UpdateTutorAds(TutorAd tutorAd)
         {
-            return _repository.UpdateTutorAds(tutorAd);
+            return iTutorAdRepository.UpdateTutorAds(tutorAd);
         }
     }
 }

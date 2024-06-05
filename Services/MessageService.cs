@@ -10,31 +10,34 @@ namespace Services
 {
     public class MessageService : IMessageService
     {
-        private readonly IMessageRepository _messageRepository;
+        private readonly IMessageRepository iMessageRepository = null;
 
-        public MessageService(MessageRepository messageRepository)
+        public MessageService()
         {
-            _messageRepository = messageRepository;
+            if (iMessageRepository == null)
+            {
+                iMessageRepository = new MessageRepository();
+            }
         }
 
         public bool AddMessage(Message message)
         {
-            return _messageRepository.AddMessage(message);
+            return iMessageRepository.AddMessage(message);
         }
 
         public bool DelMessages(int id)
         {
-            return _messageRepository.DelMessages(id);
+            return iMessageRepository.DelMessages(id);
         }
 
         public List<Message> GetMessages()
         {
-            return _messageRepository.GetMessages();
+            return iMessageRepository.GetMessages();
         }
 
         public bool UpdateMessages(Message message)
         {
-            return _messageRepository.UpdateMessages(message);
+            return iMessageRepository.UpdateMessages(message);
         }
     }
 }

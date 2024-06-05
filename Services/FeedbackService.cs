@@ -10,30 +10,33 @@ namespace Services
 {
     public class FeedbackService : IFeedbackService
     {
-        private readonly IFeedbackRepository _ifeedbackRepository;
+        private readonly IFeedbackRepository iFeedbackRepository = null;
 
-        public FeedbackService(FeedbackRepository feedbackRepository)
+        public FeedbackService()
         {
-            _ifeedbackRepository = feedbackRepository;
+            if (iFeedbackRepository == null)
+            {
+                iFeedbackRepository = new FeedbackRepository();
+            }
         }
         public bool AddFeedback(Feedback feedback)
         {
-            return _ifeedbackRepository.AddFeedback(feedback);
+            return iFeedbackRepository.AddFeedback(feedback);
         }
 
         public bool DelFeedbacks(int id)
         {
-            return _ifeedbackRepository.DelFeedbacks(id);
+            return iFeedbackRepository.DelFeedbacks(id);
         }
 
         public List<Feedback> GetFeedbacks(string id)
         {
-            return _ifeedbackRepository.GetFeedbacks(id);
+            return iFeedbackRepository.GetFeedbacks(id);
         }
 
         public bool UpdateFeedbacks(Feedback feedback)
         {
-            return _ifeedbackRepository.UpdateFeedbacks(feedback);
+            return iFeedbackRepository.UpdateFeedbacks(feedback);
         }
     }
 }

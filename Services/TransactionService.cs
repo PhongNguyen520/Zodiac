@@ -10,31 +10,34 @@ namespace Services
 {
     public class TransactionService : ITransactionService
     {
-        private readonly ITransactionRepository _transactionRepository;
+        private readonly ITransactionRepository iTransactionRepository = null;
 
-        public TransactionService(TransactionRepository transactionRepository)
+        public TransactionService()
         {
-            _transactionRepository = transactionRepository;
+            if (iTransactionRepository == null)
+            {
+                iTransactionRepository = new TransactionRepository();
+            }
         }
 
         public bool AddTransaction(Transaction transaction)
         {
-            return _transactionRepository.AddTransaction(transaction);
+            return iTransactionRepository.AddTransaction(transaction);
         }
 
         public bool DelTransactions(int id)
         {
-            return _transactionRepository.DelTransactions(id);
+            return iTransactionRepository.DelTransactions(id);
         }
 
         public List<Transaction> GetTransactions()
         {
-            return _transactionRepository.GetTransactions();
+            return iTransactionRepository.GetTransactions();
         }
 
         public bool UpdateTransactions(Transaction transaction)
         {
-            return _transactionRepository.UpdateTransactions(transaction);
+            return iTransactionRepository.UpdateTransactions(transaction);
         }
     }
 }

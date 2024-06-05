@@ -10,31 +10,34 @@ namespace Services
 {
     public class StudentService : IStudentService
     {
-        private readonly IStudentRepository _studentRepository;
+        private readonly IStudentRepository iStudentRepository = null;
 
-        public StudentService(StudentRepository studentRepository)
+        public StudentService()
         {
-            _studentRepository = studentRepository;
+            if (iStudentRepository == null)
+            {
+                iStudentRepository = new StudentRepository();
+            }
         }
 
         public bool AddStudent(Student student)
         {
-            return _studentRepository.AddStudent(student);
+            return iStudentRepository.AddStudent(student);
         }
 
         public bool DelStudents(int id)
         {
-            return _studentRepository.DelStudents(id);
+            return iStudentRepository.DelStudents(id);
         }
 
         public List<Student> GetStudents()
         {
-            return _studentRepository.GetStudents();
+            return iStudentRepository.GetStudents();
         }
 
         public bool UpdateStudents(Student student)
         {
-            return _studentRepository.UpdateStudents(student);
+            return iStudentRepository.UpdateStudents(student);
         }
     }
 }

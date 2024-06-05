@@ -10,30 +10,33 @@ namespace Services
 {
     public class ConversationService : IConversationService
     {
-        private readonly IConversationRepository _iConversationRepository;  
+        private readonly IConversationRepository iConversationRepository = null;  
         
-        public ConversationService(ConversationRepository iConversationRepository)
+        public ConversationService()
         {
-            _iConversationRepository = iConversationRepository;
+            if (iConversationRepository == null)
+            {
+                iConversationRepository = new ConversationRepository();
+            }
         }
         public bool AddConversation(Conversation conversation)
         {
-            return _iConversationRepository.AddConversation(conversation);
+            return iConversationRepository.AddConversation(conversation);
         }
 
         public bool DelConversations(int id)
         {
-            return _iConversationRepository.DelConversations(id);
+            return iConversationRepository.DelConversations(id);
         }
 
         public List<Conversation> GetConversations()
         {
-            return _iConversationRepository.GetConversations();
+            return iConversationRepository.GetConversations();
         }
 
         public bool UpdateConversations(Conversation conversation)
         {
-            return _iConversationRepository.UpdateConversations(conversation);
+            return iConversationRepository.UpdateConversations(conversation);
         }
     }
 }
