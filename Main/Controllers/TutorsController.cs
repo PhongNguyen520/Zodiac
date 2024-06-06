@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BusinessObjects;
 using DAOs;
 using Services;
+using NuGet.Protocol;
 
 namespace API.Controllers
 {
@@ -30,18 +31,12 @@ namespace API.Controllers
         }
 
         //// GET: api/Tutors/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Tutor>> GetTutor(string id)
-        //{
-        //    var tutor = await _context.Tutors.FindAsync(id);
-
-        //    if (tutor == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return tutor;
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetTutor(string id)
+        {
+            var tutor = iTutorService.GetTutor(id);
+            return Ok(tutor);
+        }
 
         //// PUT: api/Tutors/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

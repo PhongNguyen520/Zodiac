@@ -36,6 +36,11 @@ namespace Repositories
             return tutorDAO.GetTutors();
         }
 
+        public List<Subject> GetTutor(string id)
+        {
+            return tutorDAO.GetTutors(id);
+        }
+
         public bool UpdateTutors(Tutor tutor)
         {
             return tutorDAO.UpdateTutors(tutor);

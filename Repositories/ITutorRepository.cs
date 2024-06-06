@@ -16,6 +16,8 @@ namespace Repositories
         public List<Tutor> GetTutors();
 
         public bool UpdateTutors(Tutor tutor);
+
+        public List<Subject> GetTutor(string id);
     }
 }
 

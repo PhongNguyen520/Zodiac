@@ -11,7 +11,7 @@ public partial class Conversation
 
     public bool IsActive { get; set; }
 
-    public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
+    public virtual ICollection<ConversationAccount> ConversationAccounts { get; set; } = new List<ConversationAccount>();
 
-    public virtual ICollection<Account> Accounts { get; set; } = new List<Account>();
+    public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
 }

@@ -35,5 +35,5 @@ public partial class Account
 
     public virtual ICollection<Wallet> Wallets { get; set; } = new List<Wallet>();
 
-    public virtual ICollection<Conversation> Conversations { get; set; } = new List<Conversation>();
+    public virtual ICollection<ConversationAccount> ConversationAccounts { get; set; } = new List<ConversationAccount>();
 }

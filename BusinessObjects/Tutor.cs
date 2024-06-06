@@ -39,5 +39,5 @@ public partial class Tutor
 
     public virtual ICollection<TutorAd> TutorAds { get; set; } = new List<TutorAd>();
 
-    public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+    public virtual ICollection<SubjectTutor> SubjectTutors { get; set; } = new List<SubjectTutor>();
 }

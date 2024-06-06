@@ -27,6 +27,11 @@ namespace Services
             return _repository.DelTutors(id);
         }
 
+        public List<Subject> GetTutor(string id)
+        {
+            return _repository.GetTutor(id);
+        }
+
         public List<Tutor> GetTutors()
         {
             return _repository.GetTutors();
