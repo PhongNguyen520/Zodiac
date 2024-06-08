@@ -21,6 +21,14 @@ namespace Repositories
         private RoleManager<IdentityRole> _roleManager;
         private IMapper _mapper;
 
+        public AccountRepository()
+        {
+            if (accountDAO == null)
+            {
+                accountDAO = new AccountDAO();
+            }
+        }
+
         public AccountRepository(UserManager<Account> userManager,
             SignInManager<Account> signInManager, IConfiguration configuration,
             RoleManager<IdentityRole> roleManager, IMapper mapper)
