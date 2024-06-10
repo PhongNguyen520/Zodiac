@@ -19,5 +19,5 @@ public partial class Subject
 
     public virtual SubjectGroup SubjectGroup { get; set; } = null!;
 
-    public virtual ICollection<Tutor> Tutors { get; set; } = new List<Tutor>();
+    public virtual ICollection<SubjectTutor> SubjectTutors { get; set; } = new List<SubjectTutor>();
 }
